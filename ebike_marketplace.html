@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Moto & E-Bike Marketplace</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #00ffcc;
+        }
+        header p {
+            margin: 5px 0 0 0;
+            color: #ccc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .form-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .form-section h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #00ffcc;
+            padding-bottom: 10px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .submit-btn {
+            background-color: #00ffcc;
+            color: #1a1a1a;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #00cc99;
+        }
+        .listings-section h2 {
+            margin-bottom: 20px;
+        }
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .bike-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .bike-card:hover {
+            transform: translateY(-5px);
+        }
+        .bike-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+        }
+        .bike-info {
+            padding: 20px;
+        }
+        .bike-brand {
+            font-size: 0.9rem;
+            color: #00cc99;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+        }
+        .bike-title {
+            font-size: 1.4rem;
+            margin: 5px 0 10px 0;
+        }
+        .bike-price {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .bike-desc {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .contact-btn {
+            display: block;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .contact-btn:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>VoltMarket</h1>
+        <p>The Ultimate Multi-Brand E-Bike & E-Moto Marketplace</p>
+    </header>
+
+    <div class="container">
+        <!-- List a Bike Form -->
+        <section class="form-section">
+            <h2>List Your E-Bike / E-Moto for Sale</h2>
+            <form id="listingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="bikeBrand">Brand</label>
+                        <input type="text" id="bikeBrand" placeholder="e.g., Sur-Ron, Aventon, Super73" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bikeModel">Model Name</label>
+                        <input type="text" id="bikeModel" placeholder="e.g., Light Bee X, Aventure.2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bikePrice">Price ($)</label>
+                        <input type="number" id="bikePrice" placeholder="e.g., 2500" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bikeCondition">Condition</label>
+                        <select id="bikeCondition">
+                            <option value="New">New</option>
+                            <option value="Like New">Like New</option>
+                            <option value="Excellent">Excellent</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="bikeDesc">Description (Specs, Battery Health, Upgrades)</label>
+                    <textarea id="bikeDesc" placeholder="Describe the motor power, battery range, current mileage, and general condition..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Publish Listing</button>
+            </form>
+        </section>
+
+        <!-- Active Listings -->
+        <section class="listings-section">
+            <h2>Active Marketplace Listings</h2>
+            <div class="listings-grid" id="listingsGrid">
+                
+                <!-- Sample Card 1 -->
+                <div class="bike-card">
+                    <div class="bike-img" style="background-color: #3a3a3a; color: #fff;">⚡ E-Moto Pic</div>
+                    <div class="bike-info">
+                        <p class="bike-brand">Sur-Ron</p>
+                        <h3 class="bike-title">Light Bee X (2024)</h3>
+                        <div class="bike-price">$4,200</div>
+                        <p class="bike-desc">Excellent condition, only 350 miles. Upgraded GritShift peg spacer and completely stock battery/motor. Battery health at 95%.</p>
+                        <a href="mailto:seller@example.com?subject=Inquiry regarding Sur-Ron Light Bee X" class="contact-btn">Contact Seller</a>
+                    </div>
+                </div>
+
+                <!-- Sample Card 2 -->
+                <div class="bike-card">
+                    <div class="bike-img" style="background-color: #2b5c8f; color: #fff;">🚲 E-Bike Pic</div>
+                    <div class="bike-info">
+                        <p class="bike-brand">Aventon</p>
+                        <h3 class="bike-title">Aventure.2 Fat Tire</h3>
+                        <div class="bike-price">$1,450</div>
+                        <p class="bike-desc">Like New. Torque sensor model. Commuted on for 3 months, includes rear rack and fenders. Range easily hits 45+ miles per charge.</p>
+                        <a href="mailto:seller@example.com?subject=Inquiry regarding Aventon Aventure.2" class="contact-btn">Contact Seller</a>
+                    </div>
+                </div>
+
+                <!-- Sample Card 3 -->
+                <div class="bike-card">
+                    <div class="bike-img" style="background-color: #d1a12c; color: #fff;">⚡ Cruiser Pic</div>
+                    <div class="bike-info">
+                        <p class="bike-brand">Super73</p>
+                        <h3 class="bike-title">Super73-RX Mojave</h3>
+                        <div class="bike-price">$2,900</div>
+                        <p class="bike-desc">Good condition. Fully functional multi-class ride modes. Minor scuffs on the lower frame from transport, mechanically flawless.</p>
+                        <a href="mailto:seller@example.com?subject=Inquiry regarding Super73-RX" class="contact-btn">Contact Seller</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('listingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const brand = document.getElementById('bikeBrand').value;
+            const model = document.getElementById('bikeModel').value;
+            const price = document.getElementById('bikePrice').value;
+            const condition = document.getElementById('bikeCondition').value;
+            const desc = document.getElementById('bikeDesc').value;
+            
+            const grid = document.getElementById('listingsGrid');
+            
+            const newCard = document.createElement('div');
+            newCard.className = 'bike-card';
+            newCard.innerHTML = `
+                <div class="bike-img" style="background-color: #444; color: #fff;">⚡ ${condition} Ride</div>
+                <div class="bike-info">
+                    <p class="bike-brand">${brand}</p>
+                    <h3 class="bike-title">${model}</h3>
+                    <div class="bike-price">$${Number(price).toLocaleString()}</div>
+                    <p class="bike-desc">${desc}</p>
+                    <a href="mailto:offers@yourmarketplace.com?subject=Inquiry regarding ${brand} ${model}" class="contact-btn">Contact Seller</a>
+                </div>
+            `;
+            
+            grid.insertBefore(newCard, grid.firstChild);
+            document.getElementById('listingForm').reset();
+            alert('Success! Your e-bike listing has been mock-published to the top of the feed.');
+        });
+    </script>
+</body>
+</html>
